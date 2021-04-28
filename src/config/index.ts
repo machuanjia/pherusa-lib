@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y
  * @Date: 2021-04-23 11:09:54
- * @LastEditTime: 2021-04-23 15:22:02
+ * @LastEditTime: 2021-04-28 13:10:45
  * @LastEditors: D.Y
  * @FilePath: /pherusa-lib/src/config/index.ts
  * @Description:
@@ -35,6 +35,9 @@ export const webpackConfigs = ({theme = {},port=4000,proxyPort=3000,dirname = ''
         webpackConfig.output = {
           ...webpackConfig.output,
           path: path.resolve(dirname, 'dist'),
+          library: `pherusa-[name]`,
+          libraryTarget: 'umd',
+          jsonpFunction: `webpackJsonp_pherusa`,
         }
         return webpackConfig
       },
@@ -102,12 +105,17 @@ export const webpackConfigs = ({theme = {},port=4000,proxyPort=3000,dirname = ''
     ],
     devServer: {
       port: port,
+      headers:{
+        'Access-Control-Allow-Origin': '*',
+      },
       proxy: {
         '/api': {
           target: `http://localhost:${proxyPort}`,
           changeOrigin: true,
         },
       },
+      disableHostCheck:true,
+      historyApiFallback:true
     },
   },customer)
 }
