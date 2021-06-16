@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y
  * @Date: 2021-04-23 11:09:54
- * @LastEditTime: 2021-04-28 13:10:45
+ * @LastEditTime: 2021-06-16 10:34:47
  * @LastEditors: D.Y
  * @FilePath: /pherusa-lib/src/config/index.ts
  * @Description:
@@ -44,7 +44,7 @@ export const webpackConfigs = ({theme = {},port=4000,proxyPort=3000,dirname = ''
     },
     babel: {
       plugins: [
-        ['import', { libraryName: 'laiye-antd', style: true }],
+        ['import', { libraryName: 'antd', style: true }],
         [
           'import',
           {
